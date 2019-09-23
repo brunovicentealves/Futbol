@@ -5,6 +5,7 @@ public class Jogador {
     private int idjogador;
     private String nomejogador;
     private String posicao;
+    private int numerocamiseta;
     private int  idtime;
 
     public int getIdjogador() {
@@ -39,5 +40,11 @@ public class Jogador {
         this.idtime = idtime;
     }
 
+    public int getNumerocamiseta() {
+        return numerocamiseta;
+    }
 
+    public void setNumerocamiseta(int numerocamiseta) {
+        this.numerocamiseta = numerocamiseta;
+    }
 }
