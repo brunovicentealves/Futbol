@@ -24,6 +24,7 @@ public class Banco extends SQLiteOpenHelper {
                 "idjogador INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                 "nomejogador TEXT," +
                 "posicao TEXT," +
+                "numerocamiseta INTEGER,"+
                 "idtime INTEGER," +
                 "FOREIGN KEY (idtime) REFERENCES time(id));");
 
