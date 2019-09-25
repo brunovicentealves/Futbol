@@ -7,7 +7,7 @@
     tools:context=".Formulario_JogadorActivity">
 
     <Button
-        android:id="@+id/btnsalvar"
+        android:id="@+id/btnsalvarjogador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Salvar"

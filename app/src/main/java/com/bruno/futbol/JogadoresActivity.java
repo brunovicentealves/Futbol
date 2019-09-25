@@ -5,93 +5,82 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class JogadoresActivity extends AppCompatActivity {
 
-    private ListView lvtimes;
+    private Integer idtime;
+     private ListView lvJogadores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_jogadores);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        lvtimes= findViewById(R.id.lvTimes);
+        //pega o valor da tela MainActivity  pelo putestras
+        idtime = getIntent().getExtras().getInt("idtime");
 
-        setSupportActionBar(toolbar);
+        lvJogadores= findViewById(R.id.lvJogadores);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fabjogadores);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Formulario_TimeActivity.class);
+                Intent intent = new Intent(JogadoresActivity.this, Formulario_JogadorActivity.class);
+                // esta eviando via putestra o id do Time cadastrado.
+                intent.putExtra("idtime",idtime);
                 startActivity( intent );
             }
         });
-        //ao clique abre o painel de todos jogadores cadastrado
-        lvtimes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Intent intent = new Intent(MainActivity.this, JogadoresActivity.class);
 
-            //pega o objeto que esta na posição  que foi selecionado no ListView e joga no objeto de Time .
-            Time  time= (Time) adapterView.getItemAtPosition(i);
-
-            // esta eviando via putestra o id do Time cadastrado.
-            intent.putExtra("idtime",time.getId());
-            startActivity( intent );
-        }
-    });
-
-        lvtimes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        lvJogadores.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                excluir( (Time) adapterView.getItemAtPosition(i));
+                excluir( (Jogador) adapterView.getItemAtPosition(i));
+                return true;
+            }
+        });
+
+        lvJogadores.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                excluir( (Jogador) adapterView.getItemAtPosition(i));
                 return true;
             }
         });
     }
 
-    // metodo para abrir activity formulario jogador
-    private void abrirTelaJogador(){
-
-        Intent intent = new Intent(MainActivity.this, Formulario_JogadorActivity.class);
-        startActivity( intent );
-
-    }
-
-
-    private void excluir(final Time time){
+    private void excluir(final Jogador jogador){
         AlertDialog.Builder alerta = new AlertDialog.Builder(this);
         alerta.setTitle("Excluir Time");
-        alerta.setMessage("Confirma a exclusão do Time"
-                + time.getNome() + "?");
+        alerta.setMessage("Confirma a exclusão do Jogador"
+                + jogador.getNomejogador() + "?");
         alerta.setNeutralButton("Cancelar", null);
         alerta.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                TimeDAO.excluirTime(MainActivity.this, time.getId());
+                JogadorDAO.excluirJogador(JogadoresActivity.this, jogador.getIdjogador());
                 carregarLista();
             }
         });
         alerta.show();
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -116,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -123,25 +113,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void carregarLista(){
-        List<Time> lista = TimeDAO.getTime(this);
+        List<Jogador> listaJogador = JogadorDAO.getjogador(this,idtime);
 
-        if ( lista.size() == 0 ){
-            lvtimes.setEnabled( false );
-            Time fake = new Time();
-            fake.setId(0);
-            fake.setNome("Lista Vazia!");
-            lista.add( fake );
+        if ( listaJogador.size() == 0 ){
+            lvJogadores.setEnabled( false );
+            Jogador fake = new Jogador();
+            fake.setIdjogador(0);
+            fake.setNomejogador("Lista Vazia!");
+            fake.setPosicao("");
+            fake.setNumerocamiseta(0);
+            fake.setIdtime(0);
+            listaJogador.add( fake );
         }else {
-            lvtimes.setEnabled( true );
+            lvJogadores.setEnabled( true );
         }
 
-        ArrayAdapter<Time> adapter = new ArrayAdapter(
-               this, android.R.layout.simple_list_item_1,
-        lista);
+        ArrayAdapter<Jogador> adapter = new ArrayAdapter(
+                this, android.R.layout.simple_list_item_1,
+                listaJogador);
 
-       // AdapterProduto adapter = new AdapterProduto(this, lista);
+        // AdapterProduto adapter = new AdapterProduto(this, lista);
 
-        lvtimes.setAdapter( adapter );
+        lvJogadores.setAdapter( adapter );
 
     }
+
 }

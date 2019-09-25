@@ -23,7 +23,7 @@ public class Time {
 
     @Override
     public String toString(){
-        return "Id :" + this.id + "Nome:"+this.nome;
+        return " Id :" + this.id + " Nome:"+this.nome;
     }
 
 }

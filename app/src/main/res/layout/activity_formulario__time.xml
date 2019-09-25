@@ -7,7 +7,7 @@
     tools:context=".Formulario_TimeActivity">
 
     <Button
-        android:id="@+id/txtsalvartime"
+        android:id="@+id/btnsalvartime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Salvar"

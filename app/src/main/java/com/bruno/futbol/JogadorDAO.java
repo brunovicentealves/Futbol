@@ -19,7 +19,7 @@ public static void inserirJogador (Context contexto, Jogador jogador){
 
     ContentValues valores = new ContentValues();
     valores.put("nomejogador",jogador.getNomejogador());
-    valores.put("`Posicao",jogador.getPosicao());
+    valores.put("Posicao",jogador.getPosicao());
     valores.put("numerocamiseta",jogador.getNumerocamiseta());
     valores.put("idtime",jogador.getIdtime());
      db.insert("jogador",null,valores);
@@ -49,14 +49,14 @@ public static void excluirJogador(Context contexto , int idjogador){
 
 }
 
-public static List<Jogador> getjogador(Context contexto){
+public static List<Jogador> getjogador(Context contexto, int idtime){
 
     List<Jogador> listajogador = new ArrayList<>();
 
     Banco banco = new Banco(contexto);
     SQLiteDatabase db = banco.getWritableDatabase();
 
-    Cursor cursor = db.rawQuery("SELECT * FROM jogador ORDER BY nomejogador",null);
+    Cursor cursor = db.rawQuery("SELECT * FROM jogador WHERE idtime="+idtime,null);
 
     if(cursor.getCount()>0){
         cursor.moveToFirst();

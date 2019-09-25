@@ -47,4 +47,9 @@ public class Jogador {
     public void setNumerocamiseta(int numerocamiseta) {
         this.numerocamiseta = numerocamiseta;
     }
+
+    @Override
+    public String toString(){
+        return "Id :" + this.idjogador + " Nome:"+this.nomejogador+ " Posição :"+this.posicao+" Numero Camiseta:"+this.numerocamiseta +" Id Time:"+this.idtime ;
+    }
 }
