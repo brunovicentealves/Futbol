@@ -50,6 +50,6 @@ public class Jogador {
 
     @Override
     public String toString(){
-        return "Id :" + this.idjogador + " Nome:"+this.nomejogador+ " Posição :"+this.posicao+" Numero Camiseta:"+this.numerocamiseta +" Id Time:"+this.idtime ;
+        return "ID: " + this.idjogador + "   NOME:"+this.nomejogador+ "  POSIÇÂO:"+this.posicao+" NUMERO CAMISETA: "+this.numerocamiseta +" ID TIME:"+this.idtime ;
     }
 }

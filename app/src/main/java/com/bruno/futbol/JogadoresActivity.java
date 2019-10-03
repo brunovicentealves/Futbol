@@ -32,6 +32,8 @@ public class JogadoresActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setTitle("Futbol");
+
         //pega o valor da tela MainActivity  pelo putestras
         idtime = getIntent().getExtras().getInt("idtime");
 
@@ -48,13 +50,6 @@ public class JogadoresActivity extends AppCompatActivity {
             }
         });
 
-        lvJogadores.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                excluir( (Jogador) adapterView.getItemAtPosition(i));
-                return true;
-            }
-        });
 
         lvJogadores.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -63,7 +58,23 @@ public class JogadoresActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        lvJogadores.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                 Jogador jogador = (Jogador) adapterView.getItemAtPosition(i);
+                    int idjogador = jogador.getIdjogador();
+                Intent intent = new Intent(JogadoresActivity.this, FormularioEditarActivity.class);
+                intent.putExtra("acao","editar");
+                intent.putExtra("idtime",idtime);
+                intent.putExtra("idjogador",idjogador);
+                startActivity( intent );
+
+            }
+        });
     }
+
+
 
     private void excluir(final Jogador jogador){
         AlertDialog.Builder alerta = new AlertDialog.Builder(this);

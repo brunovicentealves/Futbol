@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FormularioEditarActivity"></activity>
         <activity
             android:name=".JogadoresActivity"
             android:label="@string/title_activity_jogaadores"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Formulario_TimeActivity" />
         <activity android:name=".Formulario_JogadorActivity" />
         <activity android:name=".Formulario_JogadorActivity" />

@@ -19,7 +19,7 @@ public static void inserirJogador (Context contexto, Jogador jogador){
 
     ContentValues valores = new ContentValues();
     valores.put("nomejogador",jogador.getNomejogador());
-    valores.put("Posicao",jogador.getPosicao());
+    valores.put("posicao",jogador.getPosicao());
     valores.put("numerocamiseta",jogador.getNumerocamiseta());
     valores.put("idtime",jogador.getIdtime());
      db.insert("jogador",null,valores);
@@ -32,8 +32,8 @@ public static void editarJogador(Context contexto , Jogador jogador){
     ContentValues valores = new ContentValues();
 
     valores.put("nomejogador",jogador.getNomejogador());
-    valores.put("`Posicao",jogador.getPosicao());
-    valores.put("numeroccamiseta",jogador.getNumerocamiseta());
+    valores.put("posicao",jogador.getPosicao());
+    valores.put("numerocamiseta",jogador.getNumerocamiseta());
     valores.put("idtime",jogador.getIdtime());
 
     db.update("jogador",valores,"idjogador="+jogador.getIdjogador(),null);
@@ -76,7 +76,7 @@ public static List<Jogador> getjogador(Context contexto, int idtime){
 
 }
 
-public static Jogador getJogadorById(Context contexto, int idjogador){
+public static Jogador jogadorById(Context contexto, int idjogador){
 
     Banco banco = new Banco(contexto);
     SQLiteDatabase db = banco.getWritableDatabase();
