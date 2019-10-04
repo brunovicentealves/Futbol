@@ -139,13 +139,14 @@ public class JogadoresActivity extends AppCompatActivity {
             lvJogadores.setEnabled( true );
         }
 
-        ArrayAdapter<Jogador> adapter = new ArrayAdapter(
-                this, android.R.layout.simple_list_item_1,
-                listaJogador);
+       // ArrayAdapter<Jogador> adapter = new ArrayAdapter(
+          //      this, android.R.layout.simple_list_item_1,
+           //     listaJogador);
 
         // AdapterProduto adapter = new AdapterProduto(this, lista);
+        AdapterJogadores adapterJogador = new AdapterJogadores(this,listaJogador);
 
-        lvJogadores.setAdapter( adapter );
+        lvJogadores.setAdapter( adapterJogador );
 
     }
 

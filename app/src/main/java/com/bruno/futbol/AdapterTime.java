@@ -45,14 +45,36 @@ public class AdapterTime extends BaseAdapter {
         Itemsuporte item ;
 
         if(view == null){
-
             view = inflater.inflate(R.layout.lista_time,null);
+            item = new Itemsuporte();
+             item.tvId = (TextView) view.findViewById(R.id.tvListaId);
+             item.tvNome = (TextView) view.findViewById(R.id.tvListaNome);
+             item.layout = (LinearLayout) view.findViewById(R.id.layout);
+            view.setTag(item);
+
+        }else{
+            item = (Itemsuporte) view.getTag();
+        }
+        Time time = listarTime.get(i);
+        item.tvId.setText(String.valueOf(time.getId()));
+        item.tvNome.setText(time.getNome());
+
+        if(time.getNome().equals("lista vazia !")){
+            item.tvId.setText( " " );
+        }
+            //intercala a cor do listview
+        if ( i % 2 == 0 ){
+            item.layout.setBackgroundColor(Color.WHITE);
+        }else {
+            item.layout.setBackgroundColor( Color.rgb(230, 230, 230) );
         }
 
-
-        return null;
+        return view;
     }
 
     private class Itemsuporte {
+        TextView tvId, tvNome ;
+        LinearLayout layout;
+
     }
 }

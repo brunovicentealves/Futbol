@@ -135,13 +135,14 @@ public class MainActivity extends AppCompatActivity {
             lvtimes.setEnabled( true );
         }
 
-        ArrayAdapter<Time> adapter = new ArrayAdapter(
-               this, android.R.layout.simple_list_item_1,
-        lista);
+       // ArrayAdapter<Time> adapter = new ArrayAdapter(
+          //     this, android.R.layout.simple_list_item_1,
+       // lista);
 
        // AdapterProduto adapter = new AdapterProduto(this, lista);
+        AdapterTime adapterlista = new AdapterTime(this,lista);
 
-        lvtimes.setAdapter( adapter );
+        lvtimes.setAdapter( adapterlista );
 
     }
 }
