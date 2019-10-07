@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Futbol</string>
+    <string name="action_settings">Configurações</string>
+    /formulario de editar jogadores
+    <string name="AlterarJogador">Change player</string>
+    <string name="title_activity_jogaadores">JogaadoresActivity</string>
+    <string name="txtSalvarEditar">To salve</string>
+    <string name="txtPosicaoJogadorEditar">Player position :</string>
+    <string name="txtNumeroCanisetaEditar">Player Number :</string>
+    <string name="txtNomeJogadorAlterar">Player name :</string>
+
+
+    <string name="txtSalvarTime">to salve</string>
+    <string name="txtNomeTime">Team name:</string>
+    <string name="CadastroTime">Registration team</string>
+
+
+    <string name="txtsalvarJogador">To salve</string>
+    <string name="txtJogadorPosicao">Player position :</string>
+    <string name="txtNomejogador">Player name  :</string>
+    <string name="txtNumeroJogador">Player Number :</string>
+    <string name="CadastroJogadores">Registration team</string>
+</resources>
