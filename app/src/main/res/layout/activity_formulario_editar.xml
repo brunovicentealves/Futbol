@@ -10,7 +10,7 @@
         android:id="@+id/btnalterarsalvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alterar Jogador"
+        android:text="@string/txtSalvarEditar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Posição do Jogador "
+        android:text="@string/txtPosicaoJogadorEditar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.655"
-        android:hint="Numero da Camiseta "
+        android:hint="@string/txtNumeroCanisetaEditar"
         />
 
     <EditText
@@ -54,13 +54,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.327"
-        tools:hint="Nome do jogador" />
+        tools:hint="@string/txtNomeJogadorAlterar" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alterar Jogador"
+        android:text="@string/AlterarJogador"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
